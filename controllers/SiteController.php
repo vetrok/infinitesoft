@@ -8,6 +8,9 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use dektrium\user\models\RegistrationForm as RegistrationFormDektrium;
+use dektrium\user\models\LoginForm as LoginFormDektrium;
+
 
 class SiteController extends Controller
 {
@@ -60,7 +63,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //Registration requirements
+        /** @var RegistrationForm $registrationModel */
+        $registrationModel = \Yii::createObject(RegistrationFormDektrium::className());
+
+        //Login requirements
+        /** @var LoginForm $loginModel */
+        $loginModel = \Yii::createObject(LoginFormDektrium::className());
+
+        $module = \dektrium\user\Module::getInstance();
+
+        return $this->render('index', [
+            'registrationModel'  => $registrationModel,
+            'loginModel' => $loginModel,
+            'module' => $module
+        ]);
     }
 
     /**

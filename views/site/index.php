@@ -1,53 +1,104 @@
 <?php
+use yii\helpers\Html;
+use yii\widgets\ActiveForm;
 
-/* @var $this yii\web\View */
+/**
+ * @var yii\web\View              $this
+ * @var yii\widgets\ActiveForm    $form
+ * @var dektrium\user\models\RegistrationForm $registrationModel
+ * @var dektrium\user\models\LoginForm $LoginModel
+ */
 
-$this->title = 'My Yii Application';
+$this->title = Yii::t('user', 'Main page');
+
 ?>
-<div class="site-index">
+<div class="alert alert-success">
+    <p>This view file has been overriden!</p>
+</div>
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
+<?php if (\Yii::$app->user->isGuest): ?>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
-    </div>
-
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-md-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= Yii::t('user', 'Sign up') ?></h3>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+            <div class="panel-body">
+                <?php $form = ActiveForm::begin([
+                    'id' => 'registration-form',
+                    'action' => \yii\helpers\Url::toRoute('/user/security/login'),
+                ]); ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <?= $form->field($registrationModel, 'username') ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
-            </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
+                <?= $form->field($registrationModel, 'email') ?>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
+                <?= $form->field($registrationModel, 'password')->passwordInput() ?>
 
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
+                <?= Html::submitButton(Yii::t('user', 'Sign up'), ['class' => 'btn btn-success btn-block']) ?>
+
+                <?php ActiveForm::end(); ?>
             </div>
         </div>
-
     </div>
+
+    <div class="col-md-4 col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?= Yii::t('user', 'Sign in') ?></h3>
+            </div>
+            <div class="panel-body">
+                <?php $form = ActiveForm::begin([
+                    'id' => 'login-form',
+                    'action' => \yii\helpers\Url::toRoute('/user/security/login'),
+                    'enableAjaxValidation' => false,
+                    'enableClientValidation' => false,
+                    'validateOnBlur' => false,
+                    'validateOnType' => false,
+                    'validateOnChange' => false,
+                ]) ?>
+
+                    <?= $form->field($loginModel, 'login',
+                        ['inputOptions' => ['class' => 'form-control', 'tabindex' => '1']]
+                    );
+                    ?>
+
+                    <?= $form->field(
+                        $loginModel,
+                        'password',
+                        ['inputOptions' => ['class' => 'form-control', 'tabindex' => '2']])
+                        ->passwordInput()
+                        ->label(
+                            Yii::t('user', 'Password')
+                            . ($module->enablePasswordRecovery ?
+                                ' (' . Html::a(
+                                    Yii::t('user', 'Forgot password?'),
+                                    ['/user/recovery/request'],
+                                    ['tabindex' => '5']
+                                )
+                                . ')' : '')
+                        ) ?>
+
+
+                <?= $form->field($loginModel, 'rememberMe')->checkbox(['tabindex' => '3']) ?>
+
+                <?= Html::submitButton(
+                    Yii::t('user', 'Sign in'),
+                    ['class' => 'btn btn-primary btn-block', 'tabindex' => '4']
+                ) ?>
+
+                <?php ActiveForm::end(); ?>
+            </div>
+        </div>
+        <?php if ($module->enableConfirmation): ?>
+            <p class="text-center">
+                <?= Html::a(Yii::t('user', 'Didn\'t receive confirmation message?'), ['/user/registration/resend']) ?>
+            </p>
+        <?php endif ?>
+    </div>
+
 </div>
+<?php else: ?>
+
+<?php endif ?>
