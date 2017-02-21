@@ -52,6 +52,8 @@ $this->params['breadcrumbs'][] = $this->title;
 
                 <?= $form->field($model, 'last_name') ?>
 
+                <?= $form->field($model, 'location') ?>
+
                 <?= $form->field($model, 'phone_number') ?>
 
                 <div class="form-group">
@@ -68,7 +70,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="row">
     <div class="panel-heading">
-        <?= Yii::t('user', 'Your latest wisits') ?>
+        <?= Yii::t('user', 'Your latest visits') ?>
     </div>
     <?= GridView::widget([
         'dataProvider' => $loginStories,

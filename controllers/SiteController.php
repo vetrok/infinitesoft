@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use dektrium\user\Module;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -10,6 +11,10 @@ use app\models\LoginForm;
 use app\models\ContactForm;
 use dektrium\user\models\RegistrationForm as RegistrationFormDektrium;
 use dektrium\user\models\LoginForm as LoginFormDektrium;
+use yii\data\ActiveDataProvider;
+use dektrium\user\models\User;
+
+
 
 
 class SiteController extends Controller
@@ -71,16 +76,20 @@ class SiteController extends Controller
         /** @var LoginForm $loginModel */
         $loginModel = \Yii::createObject(LoginFormDektrium::className());
 
-        $module = \dektrium\user\Module::getInstance();
+        $module = Module::getInstance();
+
+        $registeredUsers = new ActiveDataProvider([
+            'query' => User::find(),
+            'sort'=> ['defaultOrder' => ['created_at'=>SORT_DESC]]
+        ]);
 
         return $this->render('index', [
             'registrationModel'  => $registrationModel,
             'loginModel' => $loginModel,
-            'module' => $module
+            'module' => $module,
+            'registeredUsers' => $registeredUsers
         ]);
     }
-
-
 
     /**
      * Logout action.

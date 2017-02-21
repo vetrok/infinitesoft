@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "2256f9fd676b034ece790df244c31b33",
-    "content-hash": "5543d72d6b41504971f88a2426fda2af",
+    "hash": "305cf4cc4692827f9c24e943abd91cdf",
+    "content-hash": "5d07c64902611293eb0043d479c6f9aa",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -321,6 +321,57 @@
             "time": "2017-01-11 20:26:20"
         },
         {
+            "name": "donatj/phpuseragentparser",
+            "version": "v0.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/donatj/PhpUserAgent.git",
+                "reference": "a4f515619c8d9697f34dd8da2eb353bb4c57c5dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/donatj/PhpUserAgent/zipball/a4f515619c8d9697f34dd8da2eb353bb4c57c5dc",
+                "reference": "a4f515619c8d9697f34dd8da2eb353bb4c57c5dc",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "camspiers/json-pretty": "0.1.*",
+                "donatj/drop": "*",
+                "phpunit/phpunit": ">=4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "Source/UserAgentParser.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jesse G. Donat",
+                    "email": "donatj@gmail.com",
+                    "homepage": "http://donatstudios.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Simple, streamlined PHP user-agent parser",
+            "homepage": "http://donatstudios.com/PHP-Parser-HTTP_USER_AGENT",
+            "keywords": [
+                "browser",
+                "browser detection",
+                "parser",
+                "user agent",
+                "useragent"
+            ],
+            "time": "2017-01-23 19:32:09"
+        },
+        {
             "name": "ezyang/htmlpurifier",
             "version": "v4.8.0",
             "source": {
@@ -417,6 +468,42 @@
                 "mailer"
             ],
             "time": "2017-02-13 07:52:53"
+        },
+        {
+            "name": "xj/yii2-user-agent",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/xjflyttp/yii2-user-agent.git",
+                "reference": "e48c96656c90fd59253dcccfad1ced7c6bb0c84b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/xjflyttp/yii2-user-agent/zipball/e48c96656c90fd59253dcccfad1ced7c6bb0c84b",
+                "reference": "e48c96656c90fd59253dcccfad1ced7c6bb0c84b",
+                "shasum": ""
+            },
+            "require": {
+                "donatj/phpuseragentparser": ">=0.3.6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "xj\\ua\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "xjflyttp",
+                    "email": "xjflyttp@gmail.com"
+                }
+            ],
+            "description": "yii2-user-agent",
+            "time": "2015-08-19 09:32:02"
         },
         {
             "name": "yiisoft/yii2",
@@ -1121,16 +1208,16 @@
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "1.3.1",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b"
+                "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
-                "reference": "5c6447c9df362e8f8093bda8f5d8873fe5c7f65b",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
+                "reference": "04a6d1a00ea5da0727ee94309a9f0d3dbaecb569",
                 "shasum": ""
             },
             "require": {
@@ -1166,16 +1253,23 @@
                     "name": "Michael Dowling",
                     "email": "mtdowling@gmail.com",
                     "homepage": "https://github.com/mtdowling"
+                },
+                {
+                    "name": "Tobias Schultze",
+                    "homepage": "https://github.com/Tobion"
                 }
             ],
-            "description": "PSR-7 message implementation",
+            "description": "PSR-7 message implementation that also provides common utility methods",
             "keywords": [
                 "http",
                 "message",
+                "request",
+                "response",
                 "stream",
-                "uri"
+                "uri",
+                "url"
             ],
-            "time": "2016-06-24 23:00:38"
+            "time": "2017-02-21 01:20:32"
         },
         {
             "name": "myclabs/deep-copy",
@@ -2867,16 +2961,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.0.8",
+            "version": "2.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "0c4d7a1085bf3aacfad9bcba48e053d36c2c498a"
+                "reference": "647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/0c4d7a1085bf3aacfad9bcba48e053d36c2c498a",
-                "reference": "0c4d7a1085bf3aacfad9bcba48e053d36c2c498a",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9",
+                "reference": "647be6c9d48dc2f3c2e2f33b9eba0a4ca78abde9",
                 "shasum": ""
             },
             "require": {
@@ -2910,7 +3004,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2017-02-19 16:48:01"
+            "time": "2017-02-21 10:30:50"
         },
         {
             "name": "yiisoft/yii2-faker",

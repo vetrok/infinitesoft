@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\grid\GridView;
 
 /**
  * @var yii\web\View              $this
@@ -96,10 +97,30 @@ $this->title = Yii::t('user', 'Main page');
             </p>
         <?php endif ?>
     </div>
-
 </div>
 <?php else: ?>
 
     //TODO: logout
 
+
 <?php endif ?>
+
+<div class="row">
+
+    <?= GridView::widget([
+        'dataProvider' => $registeredUsers,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'username',
+            'created_at:datetime',
+            [
+                'label'=>'User details',
+                'format' => 'raw',
+                'value'=>function ($data) {
+                        return Html::a(Yii::t('user', 'Details'), ['/user/profile/show', 'id' => $data->id]);
+                    },
+            ],
+        ],
+    ]); ?>
+
+</div>
