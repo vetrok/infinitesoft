@@ -42,6 +42,13 @@ $config = [
             ],
         ],
         */
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@dektrium/user/views' => '@app/views/user'
+                ],
+            ],
+        ],
     ],
     'params' => $params,
     'modules' => [
@@ -49,6 +56,9 @@ $config = [
             'class' => 'dektrium\user\Module',
             'controllerMap' => [
                 'security' => 'app\controllers\SecurityController'
+            ],
+            'modelMap' => [
+                'Profile' => 'app\models\Profile',
             ],
         ],
     ],

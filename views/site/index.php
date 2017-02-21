@@ -80,7 +80,6 @@ $this->title = Yii::t('user', 'Main page');
                                 . ')' : '')
                         ) ?>
 
-
                 <?= $form->field($loginModel, 'rememberMe')->checkbox(['tabindex' => '3']) ?>
 
                 <?= Html::submitButton(
@@ -100,5 +99,7 @@ $this->title = Yii::t('user', 'Main page');
 
 </div>
 <?php else: ?>
+
+    //TODO: logout
 
 <?php endif ?>
