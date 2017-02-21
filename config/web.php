@@ -14,10 +14,6 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -51,11 +47,14 @@ $config = [
     'modules' => [
         'user' => [
             'class' => 'dektrium\user\Module',
+            'controllerMap' => [
+                'security' => 'app\controllers\SecurityController'
+            ],
         ],
     ],
 ];
 
-if (YII_ENV_DEV) {
+if (YII_ENV_DEV == 1100) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
