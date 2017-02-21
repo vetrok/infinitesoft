@@ -1,4 +1,5 @@
 <?php
+use app\models\LoginStories;
 use yii\data\ActiveDataProvider;
 use dektrium\user\models\User;
 
@@ -16,6 +17,10 @@ $config = [
                 'query' => User::find(),
                 'sort'=> ['defaultOrder' => ['created_at'=>SORT_DESC]]
             ]);
+
+            //Lisend to login event
+            $user = \Yii::$app->user;
+            $user->on($user::EVENT_AFTER_LOGIN, [LoginStories::className(), 'saveLoginData']);
         }
     ],
     'components' => [
