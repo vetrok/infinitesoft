@@ -7,6 +7,9 @@ use dektrium\user\controllers\SecurityController as BaseSecurityController;
 use dektrium\user\models\LoginForm;
 use xj\ua\UserAgent;
 use yii\helpers\Url;
+use dektrium\user\Module;
+use dektrium\user\models\RegistrationForm as RegistrationFormDektrium;
+use yii\data\ActiveDataProvider;
 
 class SecurityController extends BaseSecurityController
 {
@@ -31,7 +34,19 @@ class SecurityController extends BaseSecurityController
             return $this->redirect(Url::toRoute('/user/settings/profile'));
         }
 
-        return $this->goHome();
+        /** @var RegistrationFormDektrium $registrationModel */
+        $registrationModel = \Yii::createObject(RegistrationFormDektrium::className());
+        /** @var  $module */
+        $module = Module::getInstance();
+        /** @var ActiveDataProvider $registeredUsers */
+        $registeredUsers = \Yii::createObject(ActiveDataProvider::className());
+
+        return $this->render('@app/views/site/index', [
+            'registrationModel'  => $registrationModel,
+            'loginModel' => $model,
+            'module' => $module,
+            'registeredUsers' => $registeredUsers
+        ]);
     }
 
     /**

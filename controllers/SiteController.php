@@ -9,7 +9,6 @@ use app\models\LoginForm;
 use dektrium\user\models\RegistrationForm as RegistrationFormDektrium;
 use dektrium\user\models\LoginForm as LoginFormDektrium;
 use yii\data\ActiveDataProvider;
-use dektrium\user\models\User;
 
 class SiteController extends Controller
 {
@@ -35,17 +34,13 @@ class SiteController extends Controller
         //Registration requirements
         /** @var RegistrationForm $registrationModel */
         $registrationModel = \Yii::createObject(RegistrationFormDektrium::className());
-
         //Login requirements
         /** @var LoginForm $loginModel */
         $loginModel = \Yii::createObject(LoginFormDektrium::className());
-
+        /** @var  $module */
         $module = Module::getInstance();
-
-        $registeredUsers = new ActiveDataProvider([
-            'query' => User::find(),
-            'sort'=> ['defaultOrder' => ['created_at'=>SORT_DESC]]
-        ]);
+        /** @var ActiveDataProvider $registeredUsers */
+        $registeredUsers = \Yii::createObject(ActiveDataProvider::className());
 
         return $this->render('index', [
             'registrationModel'  => $registrationModel,

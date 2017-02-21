@@ -1,11 +1,23 @@
 <?php
+use yii\data\ActiveDataProvider;
+use dektrium\user\models\User;
+
 
 $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        function () {
+            //Register common dependency
+            \Yii::$container->set(ActiveDataProvider::className(), [
+                'query' => User::find(),
+                'sort'=> ['defaultOrder' => ['created_at'=>SORT_DESC]]
+            ]);
+        }
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -55,7 +67,10 @@ $config = [
         'user' => [
             'class' => 'dektrium\user\Module',
             'controllerMap' => [
-                'security' => 'app\controllers\SecurityController'
+                'security' => 'app\controllers\SecurityController',
+                'settings' => 'app\controllers\SettingsController',
+                'profile' => 'app\controllers\ProfileController',
+                'registration' => 'app\controllers\RegistrationController'
             ],
             'modelMap' => [
                 'Profile' => 'app\models\Profile',
@@ -64,7 +79,7 @@ $config = [
     ],
 ];
 
-if (YII_ENV_DEV == 1100) {
+if (YII_ENV_DEV) {
     // configuration adjustments for 'dev' environment
     $config['bootstrap'][] = 'debug';
     $config['modules']['debug'] = [
