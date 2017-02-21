@@ -27,7 +27,7 @@ $this->title = Yii::t('user', 'Main page');
             <div class="panel-body">
                 <?php $form = ActiveForm::begin([
                     'id' => 'registration-form',
-                    'action' => \yii\helpers\Url::toRoute('/user/security/login'),
+                    'action' => \yii\helpers\Url::toRoute('/user/registration/register'),
                 ]); ?>
 
                 <?= $form->field($registrationModel, 'username') ?>
