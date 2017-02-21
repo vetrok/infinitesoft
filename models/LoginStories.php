@@ -65,6 +65,6 @@ class LoginStories extends \yii\db\ActiveRecord
      * @return $this
      */
     public static function findLoginsByUserId($userId){
-        return LoginStories::find()->where(['user_id' => $userId]);
+        return static::find()->where(['user_id' => $userId]);
     }
 }

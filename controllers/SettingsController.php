@@ -4,6 +4,8 @@ namespace app\controllers;
 
 use dektrium\user\controllers\SettingsController as BaseSettingsController;
 use dektrium\user\models\Profile;
+use app\models\LoginStories;
+use yii\data\ActiveDataProvider;
 
 class SettingsController extends BaseSettingsController{
 
@@ -32,7 +34,9 @@ class SettingsController extends BaseSettingsController{
             return $this->refresh();
         }
 
-        $loginStories = LoginStories::findLoginsByUserId(\Yii::$app->user->id);
+        $loginStories = new ActiveDataProvider([
+            'query' => LoginStories::findLoginsByUserId(\Yii::$app->user->id),
+        ]);
 
         return $this->render('profile', [
             'model' => $model,

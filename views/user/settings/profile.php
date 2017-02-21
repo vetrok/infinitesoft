@@ -10,15 +10,15 @@
  */
 
 use yii\helpers\Html;
-use dektrium\user\helpers\Timezone;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
+use yii\grid\GridView;
 
 /**
  * @var yii\web\View $this
  * @var yii\widgets\ActiveForm $form
  * @var dektrium\user\models\Profile $model
- */
+ * @var yii\data\ActiveDataProvider $loginStories
+*/
 
 $this->title = Yii::t('user', 'Profile settings');
 $this->params['breadcrumbs'][] = $this->title;
@@ -66,3 +66,19 @@ $this->params['breadcrumbs'][] = $this->title;
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="panel-heading">
+        <?= Yii::t('user', 'Your latest wisits') ?>
+    </div>
+    <?= GridView::widget([
+        'dataProvider' => $loginStories,
+        'columns' => [
+            ['class' => 'yii\grid\SerialColumn'],
+            'id',
+            'ip',
+            'browser',
+            'login_time:datetime',
+        ],
+    ]); ?>
+</div>
+

@@ -38,6 +38,9 @@ AppAsset::register($this);
         ['label' => 'About', 'url' => ['/site/about']],
     ];
     if (!Yii::$app->user->isGuest) {
+        array_push($navItems,['label' => 'Profile',
+                'url' => ['/user/settings/profile']]
+        );
         array_push($navItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
                 'url' => ['/site/logout'],
                 'linkOptions' => ['data-method' => 'post']]
