@@ -42,7 +42,7 @@ AppAsset::register($this);
                 'url' => ['/user/settings/profile']]
         );
         array_push($navItems,['label' => 'Logout (' . Yii::$app->user->identity->username . ')',
-                'url' => ['/site/logout'],
+                'url' => ['/user/security/logout'],
                 'linkOptions' => ['data-method' => 'post']]
         );
     }

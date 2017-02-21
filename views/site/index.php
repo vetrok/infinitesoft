@@ -13,10 +13,6 @@ use yii\grid\GridView;
 $this->title = Yii::t('user', 'Main page');
 
 ?>
-<div class="alert alert-success">
-    <p>This view file has been overriden!</p>
-</div>
-
 <?php if (\Yii::$app->user->isGuest): ?>
 
 <div class="row">
@@ -98,15 +94,10 @@ $this->title = Yii::t('user', 'Main page');
         <?php endif ?>
     </div>
 </div>
-<?php else: ?>
-
-    //TODO: logout
-
-
 <?php endif ?>
 
 <div class="row">
-
+    <h2><?= Yii::t('user', 'Latest registered users')?></h2>
     <?= GridView::widget([
         'dataProvider' => $registeredUsers,
         'columns' => [
@@ -122,5 +113,4 @@ $this->title = Yii::t('user', 'Main page');
             ],
         ],
     ]); ?>
-
 </div>

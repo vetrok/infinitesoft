@@ -69,14 +69,11 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 </div>
 <div class="row">
-    <div class="panel-heading">
-        <?= Yii::t('user', 'Your latest visits') ?>
-    </div>
+    <h2><?= Yii::t('user', 'Your visits')?></h2>
     <?= GridView::widget([
         'dataProvider' => $loginStories,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'id',
             'ip',
             'browser',
             'login_time:datetime',

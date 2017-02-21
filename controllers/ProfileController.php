@@ -38,7 +38,8 @@ class ProfileController extends BaseProfileController
 
         return $this->render('show', [
             'profile' => $profile,
-            'loginStories' => $loginStories
+            'loginStories' => $loginStories,
+            'user' => $profile->user
         ]);
     }
 }

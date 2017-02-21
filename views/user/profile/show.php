@@ -6,14 +6,24 @@ use yii\widgets\DetailView;
 * @var yii\data\ActiveDataProvider $loginStories
 * @var yii\db\ActiveQuery $profile
 */
+
 ?>
 
 <div class="row">
     <?= DetailView::widget([
         'model' => $profile,
         'attributes' => [
-        'name',
-        'last_name',
+            [
+                'label' => $user->attributeLabels()['username'],
+                'value' => $user->username,
+            ],
+            'name',
+            'last_name',
+            [
+                'label' => $user->attributeLabels()['created_at'],
+                'value' => $user->created_at,
+                'format' => 'datetime'
+            ],
         ],
         ]);
     ?>
