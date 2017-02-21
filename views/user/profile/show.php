@@ -30,9 +30,9 @@ use yii\widgets\DetailView;
 </div>
 
 <div class="row">
-    <div class="panel-heading">
+    <h2>
         <?= Yii::t('user', 'Visits grid') ?>
-</div>
+    </h2>
 <?= GridView::widget([
     'dataProvider' => $loginStories,
     'columns' => [
