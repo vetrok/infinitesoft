@@ -1,6 +1,8 @@
 InfiniteSoft test task
+============================
 
 Deployment manual
+------------
 
 1. Clone repository to your machine
 ------------
