@@ -22,8 +22,9 @@ Composer will require some additional configuration if you don't have it - check
 
 4. Database set-up
 ------------
-4.1 Apply dump file, will be attached to project archive
-4.2 You can create database manually and migrate tables with yii migration tool
+a)  Apply dump file, will be attached to project archive
+
+b)  You can create database manually and migrate tables with yii migration tool
 
 ~~~
 php yii migrate/up --migrationPath=@vendor/dektrium/yii2-user/migrations
