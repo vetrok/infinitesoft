@@ -3,10 +3,15 @@ InfiniteSoft test task
 Deployment manual
 
 1. Clone repository to your machine
+------------
 
 2. Update composer
+------------
 
+~~~
 "php composer update"
+~~~
+
 Troubleshooting:
 Composer will require some additional configuration if you don't have it - check manual for Yii2 installation
 
